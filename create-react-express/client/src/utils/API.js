@@ -1,11 +1,11 @@
 import axios from  "axios"
 export default{
-    getrecord :function(){
+    getrecords :function(){
         return axios.get("/api/restaurant")
     },
-    //getrecord:function(id){
-        //return axios.get("/api/restaurant/" + id)
-    //},
+    getrecord:function(id){
+        return axios.get("/api/restaurant/" + id)
+    },
      deleterecord:function(id){
          return axios.get("/api/restaurant/" + id )
      },

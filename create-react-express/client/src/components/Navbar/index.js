@@ -7,18 +7,15 @@ import "./style.css"
 function Navbar() {
     return (
         <nav className = "navbar navbar-expand-lg ">
-            <a className="navbar-brand" href="/">
-                LifeStyle Restaurant
-            </a>
-            <a className="navbar-item" href="/">
-                About
-            </a>
-            <a className="navbar-item" href="/">
-                hello
-                
+            <a className="navbar-brand" href="/Restaurant">
+                FoodieReview
             </a>
             <a className="navbar-item" href="/Restaurant">
-                Restaurant
+                Home
+            </a>
+            
+            <a className="navbar-item" href="/Favorite">
+                Favorite
             </a>
 
 

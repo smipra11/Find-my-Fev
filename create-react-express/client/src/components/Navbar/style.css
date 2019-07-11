@@ -1,4 +1,17 @@
 .navbar {
-    background-color: peru;
-    height:70px;
+    background-color: navy;
+    
+        height:70px;
+}
+.navbar-item{
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 40px;
+}
+.navbar-brand{
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 40px;
 }

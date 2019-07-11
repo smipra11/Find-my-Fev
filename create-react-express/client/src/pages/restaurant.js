@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-
+import Navbar from "../components/Navbar"
+import { Link } from "react-router-dom";
 import API from "../utils/API"
 import Input from "../components/input"
 import Button from "../components/Buttons"
+import Searchbar from "../components/searchbar";
+
 import { RestaurantList, RestaurantListItem } from "../components/RestaurantList"
 
 import { Col, Row, Container } from "../components/Grid";
 
+
 class Restaurant extends Component {
     state = {
         restaurants: [],
-        
+
     };
 
     // When the component mounts, load all books and save them to this.state.books
@@ -20,8 +24,8 @@ class Restaurant extends Component {
 
     // Loads all books  and sets them to this.state.books
     loadRes = () => {
-        API.getrecord()
-            .then(res =>{
+        API.getrecords()
+            .then(res => {
                 console.log(res.data)
                 this.setState({ restaurants: res.data })
             }
@@ -35,57 +39,49 @@ class Restaurant extends Component {
             [name]: value
         });
     };
+    handleSavedButton = event => {
+
+    }
 
     render() {
         return (
             <div>
-
+                <Navbar />
+                <Searchbar />
                 <Container>
-                    <Row>
-                        <Col size="md-12">
-                            <form>
-                                <Container>
-                                    <Row>
-                                        <Col size="xs-9 sm-10">
-                                            <Input
-                                                name="resturantsearch"
-                                                value={this.state.recipeSearch}
-                                                onChange={this.handleInputChange}
-                                                placeholder="Search For a Recipe"
-                                            />
-                                        </Col>
-                                        <Col size="xs-3 sm-2">
-                                            <Button
-                                                onClick={this.handleFormSubmit}
-                                                type="success"
-                                                className="input-lg"
-                                            >
-                                                Search
-                          </Button>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </form>
-                        </Col>
-                    </Row>
+
                     <Row>
                         <Col size="xs-12">
                             {!this.state.restaurants.length ? (
                                 <h1 className="text-center">No Restaurant to Display</h1>
                             ) : (
                                     <RestaurantList>
-                                        {this.state.restaurants.map(restaurant => {
-                                            return (
+                                        {this.state.restaurants.map(restaurant =>
+                                            (
                                                 <RestaurantListItem
-                                                    key={restaurant.name}
-                                                    name={restaurant.name}
-                                                    url={restaurant.url}
-                                                    address={restaurant.address}
-                                                    rating={restaurant.rating}
-                                                />
-                                            );
-                                        })}
-                                    </RestaurantList>
+                                                    key={restaurant._id}>
+                                                    
+                                                        <strong>
+                                                            {restaurant.name}
+                                                        </strong>
+                                                
+                                                                                                      
+                                                    <p>address:{restaurant.address}</p>
+                                                    rating:{restaurant.rating}
+                                                    <a rel="noreferrer noopener" target="_blank" href={restaurant.url}>
+                                                     Go to restaurant
+                                                         </a>
+                                                         <Link to={"/restaurant/" + restaurant._id}>
+                                                        <strong>
+                                                           Add to Favorite
+                                                        </strong>
+                                                    </Link>
+                                                         
+                                            
+                                                </RestaurantListItem>
+                                            
+                                        ))}
+                                </RestaurantList>
                                 )}
                         </Col>
                     </Row>
@@ -96,7 +92,3 @@ class Restaurant extends Component {
 }
 
 export default Restaurant;
-
-
-
-
