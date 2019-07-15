@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-import Navbar from "../components/Navbar"
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+import Navbar from "../components/Navbar";
 import Searchbar from "../components/searchbar";
-import DeleteBtn from "../components/DeleteBtn"
 import API from "../utils/API";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import { Col, Row, Container } from "../components/Grid";
 
 
-class Favorite extends Component {
+class Update extends Component {
     state = {
         restaurant: {},
+        name: "",
+        url: "",
+        address: "",
+        rating: "",
+        review: ""
         
     };
 
@@ -22,6 +25,7 @@ class Favorite extends Component {
     loadRes = () => {
         API.getrecord(this.props.match.params.id)
             .then(res => this.setState({ restaurant: res.data }))
+            
             .catch(err => console.log(err));
         }
 
@@ -72,13 +76,13 @@ class Favorite extends Component {
                                         placeholder="url (required)"
                                     />
                                     <Input
-                                        value={this.state.restaurant.name}
+                                        value={this.state.restaurant.address}
                                         onChange={this.handleInputChange}
                                         name="address"
                                         placeholder=" address (required)"
                                     />
                                     <Input
-                                        value={this.state.restaurant.name}
+                                        value={this.state.restaurant.rating}
                                         onChange={this.handleInputChange}
                                         name="rating"
                                         placeholder=" rating (required)"
@@ -99,38 +103,4 @@ class Favorite extends Component {
             )
         }
     }
-    export default Favorite
-
-    
-
-    /*render() {
-        return (
-            <div>
-                <Navbar/>
-                <Searchbar />
-            <Container>
-                <Row>
-                    <Col size="md-6">
-                        <h3> Restaurant Details </h3>
-                        <h5> {this.state.restaurant.name}</h5>
-                        <h5> {this.state.restaurant.address}</h5>
-                        <h5> {this.state.restaurant.rating}</h5>
-                    </Col>
-                    <Link to={"/updateRestaurant"}>
-                      <button className="btn btn-primary">Edit user</button>
-                    </Link> 
-                    
-                </Row>
-                <Row>
-          <Col size="md-2">
-            <Link to="/">← Back to Restaurant</Link>
-          </Col>
-        </Row>
-
-            </Container>
-            </div>
-        )
-    }
-}
-    export default Favorite;*/
-
+    export default Update;

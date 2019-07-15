@@ -7,7 +7,7 @@ import "./style.css"
 function Navbar() {
     return (
         <nav className = "navbar navbar-expand-lg ">
-            <a className="navbar-brand" href="/Restaurant">
+            <a className="navbar-brand" href="/">
                 FoodieReview
             </a>
             <a className="navbar-item" href="/Restaurant">
@@ -16,6 +16,9 @@ function Navbar() {
             
             <a className="navbar-item" href="/Favorite">
                 Favorite
+            </a>
+            <a className="navbar-item" href="/addRestaurant">
+                Add Restaurant
             </a>
 
 

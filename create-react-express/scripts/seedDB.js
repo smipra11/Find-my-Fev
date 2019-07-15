@@ -14,7 +14,8 @@ const restaurantSeed = [
     url: "https://www.zomato.com/atlanta/grindhouse-burgers-downtown?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
     address: "209 Edgewood Avenue SE, Suite 117/18 30303",
     image: "https://b.zmtcdn.com/data/reviews_photos/568/8746f22d971cc047df54886c15ebb568.jpg?crop=1200%3A1200%3B0%2C0&fit=around%7C200%3A200",
-    rating: "4.4"
+    rating: "4.4",
+    
   },
   {
     name:"The Varsity",
@@ -22,6 +23,7 @@ const restaurantSeed = [
     address:"61 North Avenue NW, Midtown, Atlanta 30308",
     image:"https://b.zmtcdn.com/data/reviews_photos/6c7/54d11a547df91ca3c68f499ad8fcf6c7_1531446673.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
     rating:"4.5"
+
   },
   {
       name:"The Optimist",

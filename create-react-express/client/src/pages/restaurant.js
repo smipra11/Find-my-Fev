@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar"
 import { Link } from "react-router-dom";
 import API from "../utils/API"
-import Input from "../components/input"
-import Button from "../components/Buttons"
+import DeleteBtn from "../components/DeleteBtn"
+
+
 import Searchbar from "../components/searchbar";
+import { Input, TextArea, FormBtn } from "../components/Form";
 
 import { RestaurantList, RestaurantListItem } from "../components/RestaurantList"
 
@@ -14,6 +16,11 @@ import { Col, Row, Container } from "../components/Grid";
 class Restaurant extends Component {
     state = {
         restaurants: [],
+        name: "",
+        url: "",
+        address: "",
+        rating: "",
+        review: ""
 
     };
 
@@ -27,21 +34,25 @@ class Restaurant extends Component {
         API.getrecords()
             .then(res => {
                 console.log(res.data)
-                this.setState({ restaurants: res.data })
+                this.setState({ restaurants: res.data,name:"",url:"",address:"",rating:""})
             }
             )
             .catch(err => console.log(err));
     };
 
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
+    deleteRecord = id => {
+        API.deleterecord(id)
+            .then(res => this.loadRes())
+            .catch(err => console.log(err));
     };
-    handleSavedButton = event => {
 
-    }
+    //updateRecord = id =>{
+       // API.updateRecord
+
+    //}
+
+
+    
 
     render() {
         return (
@@ -51,7 +62,9 @@ class Restaurant extends Component {
                 <Container>
 
                     <Row>
-                        <Col size="xs-12">
+                        
+
+                        <Col size="md-8">
                             {!this.state.restaurants.length ? (
                                 <h1 className="text-center">No Restaurant to Display</h1>
                             ) : (
@@ -60,28 +73,30 @@ class Restaurant extends Component {
                                             (
                                                 <RestaurantListItem
                                                     key={restaurant._id}>
-                                                    
-                                                        <strong>
-                                                            {restaurant.name}
-                                                        </strong>
-                                                
-                                                                                                      
+
+                                                    <strong>
+                                                        {restaurant.name}
+                                                    </strong>
+
+
                                                     <p>address:{restaurant.address}</p>
                                                     rating:{restaurant.rating}
                                                     <a rel="noreferrer noopener" target="_blank" href={restaurant.url}>
-                                                     Go to restaurant
+                                                        Go to restaurant
                                                          </a>
-                                                         <Link to={"/restaurant/" + restaurant._id}>
+                                                    <Link to={"/restaurant/" + restaurant._id}>
                                                         <strong>
-                                                           Add to Favorite
+                                                            Add to Favorite
                                                         </strong>
                                                     </Link>
-                                                         
-                                            
+                                                    
+                                                    <DeleteBtn onClick={() => this.deleteRecord(restaurant._id
+                        )} />
+
                                                 </RestaurantListItem>
-                                            
-                                        ))}
-                                </RestaurantList>
+
+                                            ))}
+                                    </RestaurantList>
                                 )}
                         </Col>
                     </Row>

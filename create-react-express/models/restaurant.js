@@ -5,11 +5,11 @@ const restaurantSchema = new Schema({
   name: { type: String, required: true },
   url: { type: String, required: true },
   address: { type: String, required: true },
-  imageSrc:{ type: String, required: true },
+ 
+  rating: 
   
-  
-  rating:{ type: String, required: true },
-  review:{type:String,required:false}
+  { type: String, required: true }
+  //review:{type:String, required:true}
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);

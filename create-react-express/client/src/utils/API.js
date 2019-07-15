@@ -7,9 +7,12 @@ export default{
         return axios.get("/api/restaurant/" + id)
     },
      deleterecord:function(id){
-         return axios.get("/api/restaurant/" + id )
+         return axios.delete("/api/restaurant/" + id )
      },
      saverecord:function(restaurantdata){
-         return axios.get("/api/restaurant/",restaurantdata)
+         return axios.post("/api/restaurant/",restaurantdata)
+     },
+     updaterecord:function(id){
+         return axios.post("/api/restaurant/" + id )
      }
 }
