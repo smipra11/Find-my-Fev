@@ -22,7 +22,7 @@ function App() {
           
        <Route exact path ="/restaurant/:id" component={Favorite} />"
        <Route exact path ="/addRestaurant" component={Addrestaurant} />"
-       <Route exact path ="/restaurant/:id/edit" component={Update} />"
+       <Route exact path ="/updateRestaurant/:id" component={Update} />"
       </Switch>
       
       

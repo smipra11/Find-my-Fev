@@ -8,7 +8,7 @@ import "./style.css"
 function UpdateBtn(props) {
   return (
     <Button className="update-btn" {...props} role="button" tabIndex="0">
-      Add to Favorite
+      Update
     </Button>
   );
 }

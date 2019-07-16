@@ -13,6 +13,6 @@ export default{
          return axios.post("/api/restaurant/",restaurantdata)
      },
      updaterecord:function(id){
-         return axios.post("/api/restaurant/" + id )
+         return axios.put("/api/restaurant/" + id )
      }
 }

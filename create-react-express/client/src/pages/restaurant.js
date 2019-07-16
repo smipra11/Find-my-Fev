@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar"
 import { Link } from "react-router-dom";
 import API from "../utils/API"
 import DeleteBtn from "../components/DeleteBtn"
+import UpdateBtn from "../components/updateBtn"
 
 
 import Searchbar from "../components/searchbar";
@@ -46,10 +47,12 @@ class Restaurant extends Component {
             .catch(err => console.log(err));
     };
 
-    //updateRecord = id =>{
-       // API.updateRecord
-
-    //}
+    /*updateRecord = id => {
+        API.updaterecord(id)
+            .then(res => this.loadRes())
+            .catch(err => console.log(err));
+    };*/
+       
 
 
     
@@ -87,11 +90,13 @@ class Restaurant extends Component {
                                                     <Link to={"/restaurant/" + restaurant._id}>
                                                         <strong>
                                                             Add to Favorite
+                                                            
                                                         </strong>
                                                     </Link>
                                                     
                                                     <DeleteBtn onClick={() => this.deleteRecord(restaurant._id
                         )} />
+                        
 
                                                 </RestaurantListItem>
 
