@@ -2,46 +2,87 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import Searchbar from "../components/searchbar";
 import API from "../utils/API";
+import axios from "axios"
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Col, Row, Container } from "../components/Grid";
+import { Redirect } from 'react-router';
 
 
 class Update extends Component {
-    state = {
-        restaurant: {},
-        name: "",
-        url: "",
-        address: "",
-        rating: "",
-        review: ""
+    constructor(props) {
+        super(props);
+        this.state = {
 
-    };
+            name: "",
+            url: "",
+            address: "",
+            rating: "",
+            review: "",
+            redirect: false
+
+        };
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleurlChange = this.handleurlChange.bind(this);
+        this.handleaddressChange = this.handleaddressChange.bind(this);
+        this.handleratingChange = this.handleratingChange.bind(this);
+        this.updateUser = this.updateUser.bind(this);
+    }
 
 
     componentDidMount() {
         this.loadRes();
-
     }
+
     loadRes = () => {
-        API.getrecord(this.props.match.params.id)
-            .then(res => this.setState({ restaurant: res.data,name:"",url:"",address:"",rating:"" }))
-                    .catch(err => console.log(err));
-            
-            
+        axios.get(`http://localhost:3000/api/restaurant/${this.props.match.params.id}`)
+            .then(res => {
+                this.setState({
+                    name: res.data.name,
+                    url: res.data.url,
+                    address: res.data.address,
+                    rating: res.data.rating,
 
+                })
+                console.log(res)
+            });
     }
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
-    };
 
 
-    handleFormSubmit = event => {
+
+
+
+    handleNameChange(e) {
+        this.setState({ name: e.target.value })
+    }
+
+    handleurlChange(e) {
+        this.setState({ url: e.target.value })
+    }
+
+    handleaddressChange(e) {
+        this.setState({ address: e.target.value })
+    }
+
+    handleratingChange(e) {
+        this.setState({ rating: e.target.value })
+    }
+
+
+    updateUser(event) {
         event.preventDefault();
-        
-            API.updaterecord({
+        const userUpdate = {
+            name: this.state.name,
+            url: this.state.url,
+            address: this.state.address,
+            rating: this.state.rating
+        }
+        console.log(userUpdate)
+
+        API.updaterecord(this.props.match.params.id, userUpdate)
+            .then(res => this.loadRes())
+            .catch(err => console.log(err));
+
+            API.saverecord({
                 name: this.state.name,
                 url: this.state.url,
                 address: this.state.address,
@@ -50,9 +91,23 @@ class Update extends Component {
             })
                 .then(res => this.loadRes())
                 .catch(err => console.log(err));
-        
+    }
 
-    };
+    /* const userUpdate = {
+         name: this.state.name,
+         url: this.state.url,
+         address: this.state.rating,
+         rating: this.state.rating
+     }
+     console.log(userUpdate)
+     axios.post(`http://localhost:3000/api/restaurant/${this.props.match.params.id}`, userUpdate)
+         .then(res => {
+             console.log(res);
+             this.setState({ redirect: this.state.redirect === false })
+         })
+         .catch(err => { console.log(err) });
+    }*/
+
     render() {
         return (
             <div>
@@ -63,37 +118,35 @@ class Update extends Component {
                     <Row>
                         <Col size="md-4">
 
-                            <form>
+                            <form onSubmit={this.updateUser} >
                                 <Input
-                                    value={this.state.restaurant.name}
-                                    onChange={this.handleInputChange}
+                                    value={this.state.name}
+                                    onChange={this.handleNameChange}
                                     name="name"
                                     placeholder="Name(required)"
                                 />
                                 <Input
-                                    value={this.state.restaurant.url}
-                                    onChange={this.handleInputChange}
+                                    value={this.state.url}
+                                    onChange={this.handleurlChange}
                                     name="url"
                                     placeholder="url (required)"
                                 />
                                 <Input
-                                    value={this.state.restaurant.address}
-                                    onChange={this.handleInputChange}
+                                    value={this.state.address}
+                                    onChange={this.handleaddressChange}
                                     name="address"
                                     placeholder="address (required)"
                                 />
                                 <Input
-                                    value={this.state.restaurant.rating}
-                                    onChange={this.handleInputChange}
+                                    value={this.state.rating}
+                                    onChange={this.handleratingChange}
                                     name="rating"
                                     placeholder="rating (required)"
                                 />
 
 
-                                <FormBtn
-                                    disabled={!(this.state.restaurant.name && this.state.restaurant.url && this.state.restaurant.address && this.state.restaurant.rating)}
-                                    onClick={this.handleFormSubmit}
-                                >
+                                <FormBtn>
+
                                     Save Results
                   </FormBtn>
 
@@ -101,6 +154,8 @@ class Update extends Component {
                         </Col>
                     </Row>
                 </Container>
+                
+        
             </div>
         )
     }

@@ -12,7 +12,7 @@ export default{
      saverecord:function(restaurantdata){
          return axios.post("/api/restaurant/",restaurantdata)
      },
-     updaterecord:function(id){
-         return axios.put("/api/restaurant/" + id )
+     updaterecord:function(id,restaurantdata){
+         return axios.put("/api/restaurant/" + id ,restaurantdata)
      }
 }
