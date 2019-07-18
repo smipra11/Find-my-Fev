@@ -80,6 +80,13 @@ const restaurantSeed = [
       address:"860 Peachtree Street NE, Atlanta 30308",
       image:"https://b.zmtcdn.com/data/res_imagery/16896200_RESTAURANT_a74c5dd81ae456a92ae21450bc0831da.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
       rating:"4.1"
+  },
+  {
+    name:"Cafe Sunflower Buckhead",
+    url:"https://www.cafesunflower.com/buckhead/",
+    address:"2140 Peachtreet St NW, Atlanta, GA 30309",
+    image:"https://b.zmtcdn.com/data/res_imagery/16902720_RESTAURANT_cfb5dd53238a70e1d8a77db7d7b68dae.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+    rating:"4.5"
   }
   
 ];

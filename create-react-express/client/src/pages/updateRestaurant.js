@@ -25,6 +25,7 @@ class Update extends Component {
         this.handleurlChange = this.handleurlChange.bind(this);
         this.handleaddressChange = this.handleaddressChange.bind(this);
         this.handleratingChange = this.handleratingChange.bind(this);
+          this.handlereviewChange = this.handlereviewChange.bind(this);
         this.updateUser = this.updateUser.bind(this);
     }
 
@@ -41,6 +42,7 @@ class Update extends Component {
                     url: res.data.url,
                     address: res.data.address,
                     rating: res.data.rating,
+                    review:res.data.review
 
                 })
                 console.log(res)
@@ -66,6 +68,9 @@ class Update extends Component {
     handleratingChange(e) {
         this.setState({ rating: e.target.value })
     }
+    handlereviewChange(e) {
+        this.setState({ review: e.target.value })
+    }
 
 
     updateUser(event) {
@@ -74,7 +79,8 @@ class Update extends Component {
             name: this.state.name,
             url: this.state.url,
             address: this.state.address,
-            rating: this.state.rating
+            rating: this.state.rating,
+            review:this.state.review
         }
         console.log(userUpdate)
 
@@ -82,7 +88,7 @@ class Update extends Component {
             .then(res => this.loadRes())
             .catch(err => console.log(err));
 
-            API.saverecord({
+           /* API.saverecord({
                 name: this.state.name,
                 url: this.state.url,
                 address: this.state.address,
@@ -90,7 +96,7 @@ class Update extends Component {
 
             })
                 .then(res => this.loadRes())
-                .catch(err => console.log(err));
+                .catch(err => console.log(err));*/
     }
 
     /* const userUpdate = {
@@ -140,6 +146,12 @@ class Update extends Component {
                                 <Input
                                     value={this.state.rating}
                                     onChange={this.handleratingChange}
+                                    name="rating"
+                                    placeholder="rating (required)"
+                                />
+                                <Input
+                                    value={this.state.review}
+                                    onChange={this.handlereviewChange}
                                     name="rating"
                                     placeholder="rating (required)"
                                 />

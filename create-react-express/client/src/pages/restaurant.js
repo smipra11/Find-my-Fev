@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import API from "../utils/API"
 import DeleteBtn from "../components/DeleteBtn"
 import UpdateBtn from "../components/updateBtn"
+import Searchbar2 from "../components/searchbar2"
 
 
-import Searchbar from "../components/searchbar";
+
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 import { RestaurantList, RestaurantListItem } from "../components/RestaurantList"
@@ -35,7 +36,7 @@ class Restaurant extends Component {
         API.getrecords()
             .then(res => {
                 console.log(res.data)
-                this.setState({ restaurants: res.data,name:"",url:"",address:"",rating:""})
+                this.setState({ restaurants: res.data,name:"",url:"",address:"",rating:"",review:""})
             }
             )
             .catch(err => console.log(err));
@@ -61,7 +62,7 @@ class Restaurant extends Component {
         return (
             <div>
                 <Navbar />
-                <Searchbar />
+                <Searchbar2 />
                 <Container>
 
                     <Row>
@@ -82,10 +83,12 @@ class Restaurant extends Component {
                                                     </strong>
 
 
-                                                    <p>address:{restaurant.address}</p>
-                                                    rating:{restaurant.rating}
+                                                    <p>Address:{restaurant.address}</p>
+                                                    <p>Rating:{restaurant.rating}</p>
+                                                    <p> Review:{restaurant.review}
+                                                    </p>
                                                     <a rel="noreferrer noopener" target="_blank" href={restaurant.url}>
-                                                        Go to restaurant
+                                                       <strong>Go to restaurant</strong> 
                                                          </a>
                                                     <Link to={"/restaurant/" + restaurant._id}>
                                                         <strong>
