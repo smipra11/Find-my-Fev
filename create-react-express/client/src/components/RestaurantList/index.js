@@ -9,12 +9,12 @@ import "./style.css"
 
 // RecipeList renders a bootstrap list item
 export function RestaurantList({ children }) {
-  return <ul className="list-group">{children}</ul>;
+  return <div className="list-group">{children}</div>;
 }
 
 
 export function RestaurantListItem({  children }) {
   return (
-    <li className="list-group-item"> {children}</li>
+    <div className="list-group-item"> {children}</div>
   );
 }

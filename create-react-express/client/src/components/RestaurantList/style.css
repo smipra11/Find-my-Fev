@@ -1,13 +1,14 @@
+.list-group{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 4.4rem 10%;
+  
+}
 .list-group-item{
   display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    text-align: center;
-    
-    margin: 0 .5rem 2.3rem .5rem;
-}
-.list-group{
-    display: flex;
-    text-align: center;
-}
+  flex-direction: column;
+  justify-content: space-between;
+ 
+  margin: 0 .5rem 2.3rem .5rem;
+  }

@@ -65,16 +65,17 @@ class Restaurant extends Component {
                 <Searchbar2 />
                 <Container>
 
-                    <Row>
+                    
                         
-
-                        <Col size="md-8">
+                      
+                        
                             {!this.state.restaurants.length ? (
                                 <h1 className="text-center">No Restaurant to Display</h1>
                             ) : (
                                     <RestaurantList>
                                         {this.state.restaurants.map(restaurant =>
                                             (
+                                                
                                                 <RestaurantListItem
                                                     key={restaurant._id}>
 
@@ -97,17 +98,17 @@ class Restaurant extends Component {
                                                         </strong>
                                                     </Link>
                                                     
-                                                    <DeleteBtn onClick={() => this.deleteRecord(restaurant._id
-                        )} />
+                                                    <DeleteBtn onClick={() => this.deleteRecord(restaurant._id   )} />
                         
 
                                                 </RestaurantListItem>
+                                                
 
                                             ))}
                                     </RestaurantList>
                                 )}
-                        </Col>
-                    </Row>
+                        
+                    
                 </Container>
             </div>
         );
