@@ -1,12 +1,34 @@
 html {
-  font-size: 15px;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 560px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Reusable Component - Image Container */
+
+
+
+
+
+/* App Styles */
+
+.App {
   font-family: 'Work Sans', sans-serif;
 }
 
-.list-group{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 4.4rem 10%;
-  
+h1 {
+  padding: .66rem 0;
+  text-align: center;
+  background-color: #cca353;
+  font-family: Poppins, sans-serif;
+  font-size: 1.8rem;
+  color: #fff;
 }

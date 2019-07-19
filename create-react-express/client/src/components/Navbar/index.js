@@ -14,9 +14,7 @@ function Navbar() {
                 Home
             </a>
             
-            <a className="navbar-item" href="/Favorite">
-                Favorite
-            </a>
+            
             <a className="navbar-item" href="/addRestaurant">
                 Add Restaurant
             </a>

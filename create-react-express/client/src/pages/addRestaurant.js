@@ -25,7 +25,7 @@ class Addrestaurant extends Component {
         API.getrecords()
             .then(res => {
                 console.log(res.data)
-                this.setState({ restaurants: res.data,name:"",url:"",address:"",rating:""})
+                this.setState({ restaurants: res.data,name:"",url:"",address:"",rating:"",review:""})
             }
             )
             .catch(err => console.log(err));
@@ -41,12 +41,13 @@ class Addrestaurant extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.name && this.state.url && this.state.address && this.state.rating) {
+        if (this.state.name && this.state.url && this.state.address && this.state.rating && this.state.review) {
             API.saverecord({
                 name: this.state.name,
                 url: this.state.url,
                 address: this.state.address,
                 rating: this.state.rating,
+                review:this.state.review
 
             })
                 .then(res => this.loadRes())
@@ -70,30 +71,36 @@ class Addrestaurant extends Component {
                                     value={this.state.name}
                                     onChange={this.handleInputChange}
                                     name="name"
-                                    placeholder="Name(required)"
+                                    placeholder="Name"
                                 />
                                 <Input
                                     value={this.state.url}
                                     onChange={this.handleInputChange}
                                     name="url"
-                                    placeholder="url (required)"
+                                    placeholder="url"
                                 />
                                 <Input
                                     value={this.state.address}
                                     onChange={this.handleInputChange}
                                     name="address"
-                                    placeholder=" address (required)"
+                                    placeholder=" address"
                                 />
                                 <Input
                                     value={this.state.rating}
                                     onChange={this.handleInputChange}
                                     name="rating"
-                                    placeholder=" rating (required)"
+                                    placeholder=" rating"
+                                />
+                                <Input
+                                    value={this.state.review}
+                                    onChange={this.handleInputChange}
+                                    name="review"
+                                    placeholder=" review"
                                 />
 
 
                                 <FormBtn
-                                    disabled={!(this.state.name && this.state.url && this.state.address && this.state.rating)}
+                                    disabled={!(this.state.name && this.state.url && this.state.address && this.state.rating && this.state.review)}
                                     onClick={this.handleFormSubmit}
                                 >
                                     Add new Restaurant

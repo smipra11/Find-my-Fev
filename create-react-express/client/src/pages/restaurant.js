@@ -6,9 +6,9 @@ import DeleteBtn from "../components/DeleteBtn"
 import UpdateBtn from "../components/updateBtn"
 import Searchbar2 from "../components/searchbar2"
 
+import "./restaurant.css"
 
 
-import { Input, TextArea, FormBtn } from "../components/Form";
 
 import { RestaurantList, RestaurantListItem } from "../components/RestaurantList"
 
@@ -63,9 +63,9 @@ class Restaurant extends Component {
             <div>
                 <Navbar />
                 <Searchbar2 />
-                <Container>
+                
 
-                    
+                   
                         
                       
                         
@@ -78,7 +78,7 @@ class Restaurant extends Component {
                                                 
                                                 <RestaurantListItem
                                                     key={restaurant._id}>
-
+                                                 
                                                     <strong>
                                                         {restaurant.name}
                                                     </strong>
@@ -92,24 +92,23 @@ class Restaurant extends Component {
                                                        <strong>Go to restaurant</strong> 
                                                          </a>
                                                     <Link to={"/restaurant/" + restaurant._id}>
-                                                        <strong>
-                                                            Add to Favorite
+                                                        <p>
+                                                            Restaurant Details
                                                             
-                                                        </strong>
+                                                        </p>
                                                     </Link>
                                                     
-                                                    <DeleteBtn onClick={() => this.deleteRecord(restaurant._id   )} />
-                        
-
+                                                   
                                                 </RestaurantListItem>
                                                 
 
                                             ))}
                                     </RestaurantList>
                                 )}
+                                
                         
                     
-                </Container>
+                
             </div>
         );
     }

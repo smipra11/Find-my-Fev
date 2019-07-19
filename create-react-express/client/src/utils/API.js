@@ -3,6 +3,7 @@ export default{
     getrecords :function(){
         return axios.get("/api/restaurant")
     },
+    
     getrecord:function(id){
         return axios.get("/api/restaurant/" + id)
     },

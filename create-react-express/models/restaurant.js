@@ -12,7 +12,8 @@ const restaurantSchema = new Schema({
   rating: 
   
   { type: String, required: true },
-  review:{type:String}
+  review:{type:String},
+  
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);

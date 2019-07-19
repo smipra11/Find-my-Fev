@@ -5,7 +5,7 @@ import API from "../utils/API";
 import axios from "axios"
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { Col, Row, Container } from "../components/Grid";
-import { Redirect } from 'react-router';
+import "./updaterestaurant.css"
 
 
 class Update extends Component {
@@ -17,9 +17,8 @@ class Update extends Component {
             url: "",
             address: "",
             rating: "",
-            review: "",
-            redirect: false
-
+            review: ""
+            
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleurlChange = this.handleurlChange.bind(this);
@@ -123,45 +122,41 @@ class Update extends Component {
 
                     <Row>
                         <Col size="md-4">
-
+                          <p className = "title"> Update your reviews and rating here!!</p>
                             <form onSubmit={this.updateUser} >
                                 <Input
                                     value={this.state.name}
                                     onChange={this.handleNameChange}
                                     name="name"
-                                    placeholder="Name(required)"
+                                    placeholder="Name"
                                 />
                                 <Input
                                     value={this.state.url}
                                     onChange={this.handleurlChange}
                                     name="url"
-                                    placeholder="url (required)"
+                                    placeholder="url "
                                 />
                                 <Input
                                     value={this.state.address}
                                     onChange={this.handleaddressChange}
                                     name="address"
-                                    placeholder="address (required)"
+                                    placeholder="address "
                                 />
                                 <Input
                                     value={this.state.rating}
                                     onChange={this.handleratingChange}
                                     name="rating"
-                                    placeholder="rating (required)"
+                                    placeholder="rating "
                                 />
                                 <Input
                                     value={this.state.review}
                                     onChange={this.handlereviewChange}
-                                    name="rating"
-                                    placeholder="rating (required)"
+                                    name="review"
+                                    placeholder="review "
                                 />
 
 
-                                <FormBtn>
-
-                                    Save Results
-                  </FormBtn>
-
+<FormBtn> Save Result</FormBtn>
                             </form>
                         </Col>
                     </Row>

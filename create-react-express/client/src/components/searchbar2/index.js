@@ -4,9 +4,9 @@ import "./style.css"
 
 
 
-function Searchbar() {
+function Searchbar2() {
     return (
-        <div className ="jumbotron"></div>
+        <div className ="jumbotronnew"></div>
     )
 }
-export default Searchbar;
+export default Searchbar2;
