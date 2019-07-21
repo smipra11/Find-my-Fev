@@ -20,7 +20,12 @@ Here are the images of the working Apps
 ![Screenshot (42)](https://user-images.githubusercontent.com/45401868/61585807-f645e100-ab32-11e9-8c3e-cd51977cfb5a.png)
 
 
+
+
 ![Screenshot (43)](https://user-images.githubusercontent.com/45401868/61585808-fd6cef00-ab32-11e9-84d3-4002cc7966ca.png)
+
+
+
 
 ![Screenshot (45)](https://user-images.githubusercontent.com/45401868/61585810-078eed80-ab33-11e9-9d4f-df327cdca22b.png)
 
